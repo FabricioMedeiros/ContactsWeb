@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ContactsWeb.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,20 @@ namespace ContactsWeb.Controllers
 {
     public class ContactsController : Controller
     {
-        public IActionResult Index()
+        private readonly ContactService _contactService;
+
+        public ContactsController(ContactService contactService)
         {
-            return View();
+            _contactService = contactService;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var list = await _contactService.FindAllAsync();
+
+            list = list.OrderBy(c => c.Name).ToList();
+
+            return View(list);
         }
     }
 }

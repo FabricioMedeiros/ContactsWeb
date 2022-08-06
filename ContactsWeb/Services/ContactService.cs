@@ -16,6 +16,9 @@ namespace ContactsWeb.Services
         {
             _context = context;
         }
-       
+        public async Task<List<Contact>> FindAllAsync()
+        {
+            return await _context.Contacts.ToListAsync();
+        }
     }
 }
