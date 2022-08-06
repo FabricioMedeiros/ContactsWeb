@@ -1,0 +1,64 @@
+﻿@model ContactsWeb.Models.Contact
+
+@{
+    ViewData["Title"] = "Novo Contato";
+}
+
+<h5>Novo Contato</h5>
+<hr />
+<br />
+<div class="container w-75">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="card">
+            <div class="card-header text-center font-weight-bold" style="background-color: #6495ED;">
+                Informações Pessoais
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label asp-for="RegistreDate" class="control-label"></label>
+                            <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly="@(true)" />
+                            <span asp-validation-for="RegistreDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label asp-for="Phone" class="control-label"></label>
+                            <input asp-for="Phone" class="form-control phone" />
+                            <span asp-validation-for="Phone" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <partial name="_Address" />
+            <div class="card-footer text-center">
+                <input type="submit" value="Salvar" class="btn btn-primary" style="margin-right: 15px; width:100px;" />
+                <a asp-action="Index" class="btn btn-success" style="margin-left: 15px; width: 100px;">Voltar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

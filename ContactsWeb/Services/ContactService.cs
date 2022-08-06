@@ -20,5 +20,11 @@ namespace ContactsWeb.Services
         {
             return await _context.Contacts.ToListAsync();
         }
+
+        public async Task InsertAsync(Contact contact)
+        {
+            _context.Add(contact);
+            await _context.SaveChangesAsync();
+        }
     }
 }

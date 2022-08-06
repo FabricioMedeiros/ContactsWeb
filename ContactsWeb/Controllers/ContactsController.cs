@@ -1,4 +1,5 @@
-﻿using ContactsWeb.Services;
+﻿using ContactsWeb.Models;
+using ContactsWeb.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,31 @@ namespace ContactsWeb.Controllers
 
             return View(list);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var contact = new Contact
+            {
+                RegistreDate = System.DateTime.Today
+            };
+
+            return View(contact);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Contact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(contact);
+            }
+                        
+            await _contactService.InsertAsync(contact);
+                        
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
