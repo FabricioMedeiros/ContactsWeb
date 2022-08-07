@@ -29,5 +29,11 @@ namespace ContactsWeb.Services
             _context.Add(contact);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<Contact> FindByIdAsync(int id)
+        {
+            return await _context.Contacts.Include(a => a.Address).FirstOrDefaultAsync(c => c.Id == id);
+        }
+
     }
 }
