@@ -23,6 +23,9 @@ namespace ContactsWeb.Services
 
         public async Task InsertAsync(Contact contact)
         {
+            contact.Phone = StringExtensions.RemoveMask(contact.Phone);
+            contact.Address.ZipCode = StringExtensions.RemoveMask(contact.Address.ZipCode);
+
             _context.Add(contact);
             await _context.SaveChangesAsync();
         }
