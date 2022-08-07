@@ -1,4 +1,26 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿jQuery(".phone")
+    .ready(function () {
+        var phone;
+        $(".phone").each(function () {
+            phone = $(this).val();
+            if (phone.length > 10) {
+                $(this).mask("(99) 99999-999?9");
+            } else {
+                $(this).mask("(99) 9999-9999?9");
+            }
+        });
+    })
+    .focusout(function (event) {
+        var target, phone, element;
+        target = (event.currentTarget) ? event.currentTarget : event.srcElement;
+        phone = target.value.replace(/\D/g, '');
+        element = $(target);
+        element.unmask();
+        if (phone.length > 10) {
+            element.mask("(99) 99999-999?9");
+        } else {
+            element.mask("(99) 9999-9999?9");
+        }
+    });
 
-// Write your JavaScript code.
+jQuery("input.zipcode").mask("99.999-999");
