@@ -51,5 +51,32 @@ namespace ContactsWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var contact = await _contactService.FindByIdAsync(id);
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return View(contact);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Contact contact)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(contact);
+            }
+
+            await _contactService.UpdateAsync(contact);
+                        
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
