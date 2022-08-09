@@ -21,7 +21,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label asp-for="RegistreDate" class="control-label"></label>
-                            <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly/>
+                            <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly />
                             <span asp-validation-for="RegistreDate" class="text-danger"></span>
                         </div>
                     </div>
@@ -63,4 +63,8 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        SearchZipCode();
+    </script>
 }
