@@ -88,5 +88,23 @@ namespace ContactsWeb.Controllers
 
             return View(contact);
         }
+
+        [HttpPost]
+        public async Task<JsonResult> Delete(int id)
+        {
+            var contact = await _contactService.FindByIdAsync(id);
+
+            try
+            {
+                await _contactService.RemoveAsync(contact);
+            }
+            catch
+            {
+                return Json(false);
+            }                
+
+            return Json(true);
+        }
+
     }
 }
