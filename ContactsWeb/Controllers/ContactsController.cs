@@ -77,6 +77,16 @@ namespace ContactsWeb.Controllers
                         
             return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            var contact = await _contactService.FindByIdAsync(id);
 
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return View(contact);
+        }
     }
 }

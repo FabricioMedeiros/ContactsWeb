@@ -1,0 +1,108 @@
+﻿@model ContactsWeb.Models.Contact
+
+@{
+    ViewData["Title"] = "Detalhes do Contato";
+}
+
+<h5>Detalhes do Contato</h5>
+<hr />
+<br />
+<div class="container w-75">
+    <div class="card">
+        <div class="card-header text-center font-weight-bold" style="background-color: #6495ED;">
+            Informações Pessoais
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label asp-for="RegistreDate" class="control-label"></label>
+                        <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label"></label>
+                        <input asp-for="Phone" class="form-control phone" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-header border-top text-center font-weight-bold" style="background-color: #6495ED; ">
+            Endereço
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="form-group">
+                        <label asp-for="Address.ZipCode" class="control-label"></label>
+                        <input asp-for="Address.ZipCode" class="form-control zipcode" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Address.Street" class="control-label"></label>
+                        <input asp-for="Address.Street" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Address.Number" class="control-label"></label>
+                        <input asp-for="Address.Number" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Address.Complement" class="control-label"></label>
+                        <input asp-for="Address.Complement" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Address.Neighborhood" class="control-label"></label>
+                        <input asp-for="Address.Neighborhood" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label asp-for="Address.City" class="control-label"></label>
+                        <input asp-for="Address.City" class="form-control" readonly />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Address.State" class="control-label"></label>
+                        <input asp-for="Address.State" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary" style="margin-right: 15px; width:100px;">Editar</a>
+            <a asp-action="Index" class="btn btn-success" style="margin-left: 15px; width: 100px;">Voltar</a>
+        </div>
+    </div>
+</div>
+
