@@ -59,6 +59,18 @@ namespace ContactsWeb.Services
             }
         }
 
+        public async Task RemoveAsync(Contact contact)
+        {
+
+            if (contact == null)
+            {
+                throw new NotFoundException("Id não encontado.");
+            }
+
+            _context.Contacts.Remove(contact);
+            await _context.SaveChangesAsync();
+        }
+
     }
 
 }
