@@ -72,3 +72,27 @@ function SearchZipCode() {
         });
     });
 }
+
+function ConfirmDeletion(id, name) {
+    $(document).ready(function () {
+        $(".nameContact").text(name);
+        $(".modal").modal();
+
+        $(".btnDelete").on('click', function () {
+            $.ajax({
+                url: 'Contact/Delete',
+                method: 'POST',
+                data: { id: id },
+                success: function (data) {
+                    location.reload(true);
+                }
+            });
+        });
+
+        $(".btnClose").on('click', function () {
+            id = null;
+            name = null;
+            $(".modal").modal('hide');
+        });
+    });
+}
