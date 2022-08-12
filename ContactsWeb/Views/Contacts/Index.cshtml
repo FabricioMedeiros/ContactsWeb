@@ -45,9 +45,29 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a onclick="ConfirmDeletion(@item.Id,'@item.Name')">Delete</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Atenção</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Deseja realmente excluir o Contato: <text class="nameContact"></text> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary btnClose" data-dismiss="modal">Não</button>
+                <button type="button" class="btn btn-outline-danger btnDelete" data-dismiss="modal">Sim</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -80,7 +80,7 @@ function ConfirmDeletion(id, name) {
 
         $(".btnDelete").on('click', function () {
             $.ajax({
-                url: 'Contact/Delete',
+                url: 'Contacts/Delete',
                 method: 'POST',
                 data: { id: id },
                 success: function (data) {
