@@ -1,20 +1,21 @@
 ﻿@model IEnumerable<ContactsWeb.Models.Contact>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Agenda de Contatos";
 }
 
-<h1>Index</h1>
+<div class="alert alert-dark row">
+    <div class="col-3">
+        <a asp-action="Create" class="btn btn-sm btn-outline-dark">Novo contato</a>
+    </div>
+    <div class="col-9 text-right">
+        <span class="align-middle"> @Model.Count() contatos cadastrados</span>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-responsive-xl table-striped table-hover">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.RegistreDate)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -28,27 +29,25 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegistreDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a onclick="ConfirmDeletion(@item.Id,'@item.Name')">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="text-right">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning p-1" style="width: 75px;">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info p-1" style="width: 75px;">Detalhes</a>
+                    <a class="btn btn-sm btn-outline-danger p-1" style="width: 75px;" onclick="ConfirmDeletion(@item.Id,'@item.Name')">Excluir</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
