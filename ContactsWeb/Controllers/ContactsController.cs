@@ -47,7 +47,9 @@ namespace ContactsWeb.Controllers
             }
                         
             await _contactService.InsertAsync(contact);
-                        
+
+            TempData["NewContact"] = $"O Contato {contact.Name} foi incluído com sucesso!";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -74,7 +76,9 @@ namespace ContactsWeb.Controllers
             }
 
             await _contactService.UpdateAsync(contact);
-                        
+
+            TempData["UpdateContact"] = $"O Contato {contact.Name} foi atualizado com sucesso!";
+
             return RedirectToAction(nameof(Index));
         }
         public async Task<IActionResult> Details(int id)
@@ -101,7 +105,9 @@ namespace ContactsWeb.Controllers
             catch
             {
                 return Json(false);
-            }                
+            }
+
+            TempData["NewContact"] = $"O Contato {contact.Name} foi excluído com sucesso!";
 
             return Json(true);
         }

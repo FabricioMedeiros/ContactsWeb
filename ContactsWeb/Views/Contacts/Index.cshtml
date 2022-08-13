@@ -14,6 +14,18 @@
     </div>
 </div>
 
+<div class="msg_box">
+    @if (TempData["NewContact"] != null)
+    {
+        <p class="alert alert-success">@TempData["NewContact"].ToString()</p>}
+    @if (TempData["UpdateContact"] != null)
+    {
+        <p class="alert alert-primary">@TempData["UpdateContact"].ToString()</p>}
+    @if (TempData["DeleteContact"] != null)
+    {
+        <p class="alert alert-danger">@TempData["DeleteContact"].ToString()</p>}
+</div>
+
 <table class="table table-responsive-xl table-striped table-hover">
     <thead>
         <tr>

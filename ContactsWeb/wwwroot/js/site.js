@@ -96,3 +96,7 @@ function ConfirmDeletion(id, name) {
         });
     });
 }
+
+$(document).ready(function () {
+    $(".msg_box").fadeOut(5000);
+});
