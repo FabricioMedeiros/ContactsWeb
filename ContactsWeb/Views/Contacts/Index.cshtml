@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ContactsWeb.Models.Contact>
+﻿@using ContactsWeb.Extensions
+@model IEnumerable<ContactsWeb.Models.Contact>
 
 @{
     ViewData["Title"] = "Agenda de Contatos";
@@ -36,7 +37,7 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Phone)
+                    @this.FormatPhone(item.Phone)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
