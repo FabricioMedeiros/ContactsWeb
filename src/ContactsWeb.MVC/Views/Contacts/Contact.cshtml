@@ -1,15 +1,20 @@
 ﻿@model ContactsWeb.Models.Contact
 
 @{
-    ViewData["Title"] = "Novo Contato";
+    ViewData["Title"] = (Model.Id == 0) ? "Novo Contato" : "Editar Dados Contato";
 }
 
-<h5>Novo Contato</h5>
+<h5>@ViewData["Title"]</h5>
 <hr />
 <br />
 <div class="container w-75">
-    <form asp-action="Create">
+    <form asp-action="@(Model.Id == 0 ? "Create" : "Edit" )">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (Model.Id != 0)
+        {
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Address.Id" />
+        }
         <div class="card">
             <div class="card-header text-center font-weight-bold" style="background-color: #6495ED;">
                 Informações Pessoais
@@ -19,7 +24,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label asp-for="RegistreDate" class="control-label"></label>
-                            <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly="@(true)" />
+                            <input asp-for="RegistreDate" class="form-control" style="text-align: center;" readonly="@(Model.Id != 0)" />
                             <span asp-validation-for="RegistreDate" class="text-danger"></span>
                         </div>
                     </div>
@@ -61,8 +66,7 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-    <script>
+<script>
         SearchZipCode();
-    </script>
+</script>
 }
