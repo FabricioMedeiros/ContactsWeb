@@ -16,6 +16,7 @@ ContactsWeb é uma aplicação de agenda de contatos desenvolvida com C#, ASP.NE
 - ![MVC](https://img.shields.io/badge/MVC-Pattern-red)
 - ![Razor Pages](https://img.shields.io/badge/Razor%20Pages-3.1-lightgrey)
 - ![Entity Framework Core](https://img.shields.io/badge/Entity%20Framework%20Core-3.1-green)
+- ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927)
 
 ## 🚀 Como Usar
 
